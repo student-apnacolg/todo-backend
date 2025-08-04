@@ -9,6 +9,7 @@ dotenv.config();
 const app = express()
 
 connectDB();
+
 app.use(cors({
   origin: 'https://todo-frontend-steel-eight.vercel.app',
   credentials: true
@@ -21,4 +22,4 @@ app.get('/', (req,res) => {
   res.send("API is running")
 })
 
-module.exports = serverlessExpress(app)
+module.exports.handler = serverlessExpress(app)
