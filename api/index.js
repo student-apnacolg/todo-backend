@@ -23,4 +23,4 @@ app.get('/', (req,res) => {
 
 app.use('/api/tasks', taskRoutes);
 
-module.exports.handler = serverlessExpress(app)
+module.exports = serverlessExpress(app)
