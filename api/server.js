@@ -16,10 +16,11 @@ app.use(cors({
 }))
 app.use(express.json())
 
-app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req,res) => {
   res.send("API is running")
 })
+
+app.use('/api/tasks', taskRoutes);
 
 module.exports.handler = serverlessExpress(app)
