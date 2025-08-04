@@ -17,7 +17,9 @@ app.use(express.json())
 app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req,res) => {
-  res.send('API running...')
+  res.json({
+    success: true
+  })
 })
 
 module.exports = serverlessExpress(app)
