@@ -23,4 +23,4 @@ app.get('/', (req,res) => {
 })
 
 
-module.exports = serverlessExpress(app)
+module.exports = serverlessExpress({app})
