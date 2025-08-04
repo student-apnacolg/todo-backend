@@ -10,7 +10,7 @@ const app = express()
 
 connectDB();
 app.use(cors({
-  origin: 'https://mern-frontend-eight-kappa.vercel.app/'
+  origin: 'https://todo-frontend-steel-eight.vercel.app/'
 }))
 app.use(express.json())
 
