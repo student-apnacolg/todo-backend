@@ -22,4 +22,4 @@ app.get('/', (req,res) => {
   res.send("API is running")
 })
 
-module.exports = serverlessExpress({app})
+module.exports = serverlessExpress(app)
