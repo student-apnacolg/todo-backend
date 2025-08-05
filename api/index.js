@@ -8,6 +8,7 @@ const taskRoutes = require('../src/routes/taskRoutes');
 dotenv.config();
 
 const app = express()
+
 connectDB();
 
 app.use(cors({
@@ -19,7 +20,7 @@ app.use(express.json())
 app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req,res) => {
-  res.send("API is running")
+  res.status(200).send("API is running")
 })
 
 module.exports = serverlessExpress(app)
