@@ -8,8 +8,19 @@ const taskRoutes = require('../src/routes/taskRoutes');
 dotenv.config();
 
 const app = express()
+let isConnected = false;
 
-connectDB();
+async function initDB() {
+  if (!isConnected) {
+    try {
+      await connectDB();
+      isConnected = true;
+      console.log('✅ DB Connected');
+    } catch (error) {
+      console.error('❌ DB Error:', error.message);
+    }
+  }
+}
 
 app.use(cors({
   origin: 'https://todo-frontend-steel-eight.vercel.app/',
@@ -17,10 +28,14 @@ app.use(cors({
 }))
 app.use(express.json())
 
-app.use('/api/tasks', taskRoutes);
+app.get('/', async (req, res) => {
+  await initDB();
+  res.status(200).send('✅ API is running');
+});
 
-app.get('/', (req,res) => {
-  res.status(200).send("API is running")
-})
+app.use('/api/tasks', async (req, res, next) => {
+  await initDB();
+  next();
+}, taskRoutes);
 
 module.exports = serverlessExpress(app)
