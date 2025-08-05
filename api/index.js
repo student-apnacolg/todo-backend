@@ -12,6 +12,7 @@ let isConnected = false;
 
 async function initDB() {
   if (!isConnected) {
+    console.log("connecting to DB....")
     try {
       await connectDB();
       isConnected = true;
@@ -26,6 +27,7 @@ app.use(cors({
   origin: 'https://todo-frontend-steel-eight.vercel.app/',
   credentials: true
 }))
+
 app.use(express.json())
 
 app.get('/', async (req, res) => {
