@@ -11,7 +11,7 @@ const app = express()
 connectDB();
 
 app.use(cors({
-  origin: 'https://todo-frontend-steel-eight.vercel.app',
+  origin: 'https://todo-frontend-steel-eight.vercel.app/',
   credentials: true
 }))
 app.use(express.json())
@@ -21,6 +21,5 @@ app.use('/api/tasks', taskRoutes);
 app.get('/', (req,res) => {
   res.send("API is running")
 })
-
 
 module.exports = serverlessExpress({app})
