@@ -11,7 +11,9 @@ const app = express()
 connectDB();
 
 app.use(cors({
-  origin: 'https://todo-frontend-steel-eight.vercel.app',
+  origin: ['http://localhost:5173',
+    'https://todo-frontend-steel-eight.vercel.app'
+  ],
   credentials: true
 }))
 
